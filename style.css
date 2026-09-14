@@ -1,0 +1,514 @@
+/* =========================================================
+   Base
+   ========================================================= */
+.page {
+  display: none;
+}
+
+#home {
+  display: block;
+}
+:root {
+    --text: #222;
+    --text-light: #666;
+    --heading: #111;
+    --accent: #2457a6;
+    --border: #ddd;
+    --background: #fff;
+    --background-alt: #f7f8fa;
+
+    --max-width: 960px;
+    --header-height: 64px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+main > .section {
+    display: none;
+}
+
+main > .section.active {
+    display: block;
+}
+
+
+/* =========================================================
+   Typography
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+    color: var(--heading);
+    line-height: 1.3;
+}
+
+h1 {
+    margin-bottom: 0.25rem;
+    font-size: 2.3rem;
+    font-weight: 650;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   Layout
+   ========================================================= */
+
+.container {
+    width: min(
+        calc(100% - 40px),
+        var(--max-width)
+    );
+
+    margin: 0 auto;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-alt {
+    background: var(--background-alt);
+}
+
+.section-intro {
+    max-width: 750px;
+    margin-bottom: 2.5rem;
+    color: var(--text-light);
+}
+
+.subsection {
+    margin-top: 3rem;
+}
+
+
+/* =========================================================
+   Header
+   ========================================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    height: var(--header-height);
+
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-title {
+    color: var(--heading);
+    font-size: 1.1rem;
+    font-weight: 650;
+}
+
+.site-title:hover {
+    text-decoration: none;
+}
+
+.site-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.site-nav a {
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   About
+   ========================================================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.about-photo img {
+    display: block;
+
+    width: 160px;
+    height: 160px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.subtitle {
+    margin-bottom: 1.25rem;
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+.about-content {
+    max-width: 700px;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    margin-top: 1.5rem;
+}
+
+.contact-links a {
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   Education
+   ========================================================= */
+
+.timeline {
+    border-left: 2px solid var(--border);
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+
+    padding: 0.75rem 0 0.75rem 1.5rem;
+
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+
+    position: absolute;
+    left: -6px;
+    top: 1.3rem;
+
+    width: 10px;
+    height: 10px;
+
+    background: var(--background);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+}
+
+.timeline-date {
+    color: var(--text-light);
+}
+
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-content span {
+    color: var(--text-light);
+}
+
+
+/* =========================================================
+   Contact
+   ========================================================= */
+
+.contact-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 0.5rem;
+}
+
+
+/* =========================================================
+   Research
+   ========================================================= */
+
+.research-area {
+    margin-top: 2.5rem;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-list span {
+    padding: 0.35rem 0.8rem;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    background: var(--background);
+
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.publication-list {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.publication-list li {
+    padding-left: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.publication-title {
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.publication-authors {
+    color: var(--text);
+}
+
+.publication-venue {
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.publication-links {
+    display: flex;
+    gap: 1rem;
+
+    margin-top: 0.35rem;
+}
+
+.publication-links a {
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   Teaching
+   ========================================================= */
+
+.teaching-list {
+    max-width: 800px;
+}
+
+.teaching-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+
+    padding: 1rem 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.teaching-item:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.teaching-term {
+    color: var(--text-light);
+}
+
+.teaching-item div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.teaching-item span {
+    color: var(--text-light);
+}
+
+
+/* =========================================================
+   Miscellaneous
+   ========================================================= */
+
+.simple-list {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.simple-list li {
+    margin-bottom: 0.75rem;
+}
+
+.simple-list span {
+    display: block;
+    color: var(--text-light);
+}
+
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
+.site-footer {
+    padding: 2rem 0;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   Responsive Design
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .container {
+        width: min(
+            calc(100% - 30px),
+            var(--max-width)
+        );
+    }
+
+    .site-header {
+        height: auto;
+    }
+
+    .header-inner {
+        padding: 0.75rem 0;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .site-nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .about-photo img {
+        width: 130px;
+        height: 130px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+    }
+
+    .teaching-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
+
+/* =========================================================
+   Accessibility
+   ========================================================= */
+
+a:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
