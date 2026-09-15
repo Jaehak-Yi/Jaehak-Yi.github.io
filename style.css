@@ -28,6 +28,10 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
+
+    /* 섹션 전환 시 세로 스크롤바 유무로 인해
+       레이아웃 폭이 변하면서 네비게이션 위치가 움직이는 현상 방지 */
+    scrollbar-gutter: stable;
 }
 
 body {
