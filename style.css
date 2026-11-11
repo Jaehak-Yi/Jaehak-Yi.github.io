@@ -1,13 +1,6 @@
 /* =========================================================
    Base
    ========================================================= */
-.page {
-  display: none;
-}
-
-#home {
-  display: block;
-}
 :root {
     --text: #222;
     --text-light: #666;
@@ -26,7 +19,6 @@
 }
 
 html {
-    scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
 
     /* 섹션 전환 시 세로 스크롤바 유무로 인해
@@ -52,12 +44,8 @@ body {
     line-height: 1.7;
 }
 
-main > .section {
+main > .section[hidden] {
     display: none;
-}
-
-main > .section.active {
-    display: block;
 }
 
 
@@ -137,6 +125,11 @@ a:hover {
     margin-top: 3rem;
 }
 
+.subsection-intro {
+    max-width: 700px;
+    color: var(--text-light);
+}
+
 
 /* =========================================================
    Header
@@ -179,11 +172,22 @@ a:hover {
 .site-nav a {
     color: var(--text);
     font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 0.15rem;
+    border-bottom: 2px solid transparent;
 }
 
 .site-nav a:hover {
     color: var(--accent);
     text-decoration: none;
+}
+
+.site-nav a[aria-current="location"] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    font-weight: 600;
 }
 
 
@@ -207,12 +211,6 @@ a:hover {
     object-fit: cover;
 
     border-radius: 50%;
-}
-
-.subtitle {
-    margin-bottom: 1.25rem;
-    color: var(--text-light);
-    font-size: 1.05rem;
 }
 
 .about-content {
@@ -361,12 +359,16 @@ a:hover {
    ========================================================= */
 
 .teaching-list {
+    display: grid;
+    grid-auto-rows: 1fr;
     max-width: 800px;
 }
 
 .teaching-item {
     display: grid;
     grid-template-columns: 150px 1fr;
+    align-items: center;
+    align-content: center;
 
     padding: 1rem 0;
 
@@ -378,16 +380,23 @@ a:hover {
 }
 
 .teaching-term {
-    color: var(--text-light);
+    color: var(--heading);
+    font-weight: 600;
 }
 
-.teaching-item div:last-child {
-    display: flex;
-    flex-direction: column;
+.course-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.teaching-item span {
-    color: var(--text-light);
+.course-list li + li {
+    margin-top: 0.2rem;
+}
+
+.course-list strong {
+    margin-right: 0.25rem;
+    font-weight: 600;
 }
 
 
@@ -396,17 +405,34 @@ a:hover {
    ========================================================= */
 
 .simple-list {
+    max-width: 800px;
     margin: 0;
-    padding-left: 1.25rem;
+    padding: 0;
+    list-style: none;
 }
 
 .simple-list li {
-    margin-bottom: 0.75rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.simple-list li:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.simple-list strong {
+    color: var(--heading);
+    font-weight: 600;
 }
 
 .simple-list span {
-    display: block;
     color: var(--text-light);
+    text-align: right;
+    font-size: 0.95rem;
 }
 
 
@@ -441,7 +467,7 @@ a:hover {
 @media (max-width: 700px) {
 
     .section {
-        padding: 60px 0;
+        padding: 48px 0;
     }
 
     .container {
@@ -451,25 +477,9 @@ a:hover {
         );
     }
 
-    .site-header {
-        height: auto;
-    }
-
-    .header-inner {
-        padding: 0.75rem 0;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .site-nav {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px;
     }
 
     .about-photo img {
@@ -495,9 +505,58 @@ a:hover {
         gap: 0.25rem;
     }
 
+    .simple-list li {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+    }
+
+    .simple-list span {
+        text-align: left;
+    }
+
     .footer-inner {
         flex-direction: column;
         gap: 0.25rem;
+    }
+}
+
+@media (max-width: 520px) {
+    html {
+        scroll-padding-top: 0;
+    }
+
+    .site-header {
+        position: static;
+        height: auto;
+    }
+
+    .header-inner {
+        padding: 0.5rem 0;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .site-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem 0.5rem;
+    }
+
+    .site-nav a {
+        padding: 0 0.35rem;
+    }
+
+    .section {
+        padding: 40px 0 56px;
+    }
+
+    .about-grid {
+        gap: 16px;
+    }
+
+    .about-photo img {
+        width: 112px;
+        height: 112px;
     }
 }
 
@@ -511,8 +570,3 @@ a:focus-visible {
     outline-offset: 3px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-}
